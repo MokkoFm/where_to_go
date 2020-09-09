@@ -1,4 +1,7 @@
-from where_to_go import views
+from places import views
+
+
+
 """where_to_go URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
