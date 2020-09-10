@@ -1,4 +1,8 @@
 from places import views
+from django.contrib import admin
+from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 """where_to_go URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -14,10 +18,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index)
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
