@@ -1,13 +1,12 @@
 from django.shortcuts import render
 from django.contrib.staticfiles.storage import staticfiles_storage
-from .models import Place
-from django.http import HttpResponse
+from .models import Place, Image
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 
 
 def index(request):
     moscow_legends = staticfiles_storage.url("places/moscow_legends.json")
-    #roofs_24 = staticfiles_storage.url("places/roofs24.json")
     places = Place.objects.all()
     places_info = []
 
@@ -39,7 +38,19 @@ def index(request):
 
 def post_detail(request, id):
     place = get_object_or_404(Place, id=id)
-    response = HttpResponse()
-    response.write(place.title)
+
+    data = {
+      "title": place.title,
+      "imgs": [image.picture.url for image in place.images.all()],
+      "description_short": place.description_short,
+      "description_long": place.description_long,
+      "coordinates": {
+        "lng": place.lng,
+        "lat": place.lat
+      }
+    }
+
+    response = JsonResponse(data, safe=False, json_dumps_params={
+                            'ensure_ascii': False, "indent": 2})
 
     return response
