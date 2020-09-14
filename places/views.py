@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.contrib.staticfiles.storage import staticfiles_storage
 from .models import Place
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 
 
 def index(request):
@@ -33,3 +35,11 @@ def index(request):
     context = {"value": places_info}
 
     return render(request, 'index.html', context=context)
+
+
+def post_detail(request, id):
+    place = get_object_or_404(Place, id=id)
+    response = HttpResponse()
+    response.write(place.title)
+
+    return response
