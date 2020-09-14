@@ -3,6 +3,7 @@ from django.contrib.staticfiles.storage import staticfiles_storage
 from .models import Place, Image
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 
 
 def index(request):
@@ -23,7 +24,7 @@ def index(request):
               "properties": {
                 "title": place.title,
                 "placeId": place.id,
-                "detailsUrl": moscow_legends,
+                "detailsUrl": reverse("place_detail", args=[place.id]),
               }
             },
           ]
