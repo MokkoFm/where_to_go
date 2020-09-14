@@ -1,13 +1,11 @@
 from django.shortcuts import render
-from django.contrib.staticfiles.storage import staticfiles_storage
-from .models import Place, Image
+from .models import Place
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 
 
 def index(request):
-    moscow_legends = staticfiles_storage.url("places/moscow_legends.json")
     places = Place.objects.all()
     places_info = []
 
