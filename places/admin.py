@@ -1,15 +1,15 @@
 from django.contrib import admin
-from .models import Place
-from .models import Image
+from .models import Place, Image
 from django.utils.safestring import mark_safe
+from adminsortable2.admin import SortableInlineAdminMixin, SortableAdminMixin
 
 
 @admin.register(Image)
-class ImageAdmin(admin.ModelAdmin):
+class ImageAdmin(SortableAdminMixin, admin.ModelAdmin):
     raw_id_fields = ["place"]
 
 
-class ImageInline(admin.TabularInline):
+class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     model = Image
     readonly_fields = ("image_preview", )
     fields = ["picture", "place", "position", "image_preview"]
