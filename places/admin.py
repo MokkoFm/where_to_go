@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Place
 from .models import Image
+from django.utils.safestring import mark_safe
 
 
 @admin.register(Image)
@@ -10,6 +11,17 @@ class ImageAdmin(admin.ModelAdmin):
 
 class ImageInline(admin.TabularInline):
     model = Image
+    readonly_fields = ("image_preview", )
+    fields = ["picture", "place", "position", "image_preview"]
+
+    def image_preview(self, instance):
+        return mark_safe(
+            "<img src='{url}' width='{width}' height='{height}' />".format(
+                url=instance.picture.url,
+                width="auto",
+                height='200px'
+            )
+        )
 
 
 @admin.register(Place)
