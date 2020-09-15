@@ -34,7 +34,7 @@ Run development server with command:
 python manage.py runserver
 ```
 
-### Admin panel 
+## Admin panel 
 
 Create superuser with command:
 ```
