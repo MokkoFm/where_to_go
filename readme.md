@@ -34,6 +34,16 @@ Run development server with command:
 python manage.py runserver
 ```
 
+### Admin panel 
+
+Create superuser with command:
+```
+python manage.py create superuser
+```
+
+Link to the admin panel: `http://127.0.0.1:8000/admin/`. 
+You can add images and places there. 
+
 ## Project's Purposes
 
 The code is written for educational purposes as a task in web-development course on the [Devman](https://dvmn.org/).
