@@ -1,6 +1,7 @@
 # Where to go - interesting places in Moscow
 
 You can find and get more information about amazing places in Moscow.
+[Web-site](https://mokkofm.pythonanywhere.com/) of the project.
 
 ## Installation
 
