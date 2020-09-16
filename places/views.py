@@ -38,7 +38,7 @@ def index(request):
 def post_detail(request, id):
     place = get_object_or_404(Place, id=id)
 
-    data = {
+    place_details = {
       "title": place.title,
       "imgs": [image.picture.url for image in place.images.all()],
       "description_short": place.description_short,
@@ -49,7 +49,7 @@ def post_detail(request, id):
       }
     }
 
-    response = JsonResponse(data, safe=False, json_dumps_params={
+    response = JsonResponse(place_details, safe=False, json_dumps_params={
                             'ensure_ascii': False, "indent": 2})
 
     return response
