@@ -12,7 +12,7 @@ class Place(models.Model):
     lat = models.FloatField(verbose_name="Latitude")
 
     def __str__(self):
-        return f"{self.title}"
+        return self.title
 
 
 class Image(models.Model):
