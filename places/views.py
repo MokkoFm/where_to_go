@@ -10,7 +10,7 @@ def index(request):
     places_info = []
 
     for place in places:
-        info = {
+        place_feature = {
           "type": "FeatureCollection",
           "features": [
             {
@@ -28,7 +28,7 @@ def index(request):
           ]
         }
 
-        places_info.append(info)
+        places_info.append(place_feature)
 
     context = {"value": places_info}
 
