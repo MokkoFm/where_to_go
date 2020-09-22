@@ -11,7 +11,7 @@ class ImageAdmin(SortableAdminMixin, admin.ModelAdmin):
 
 class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     model = Image
-    readonly_fields = ("image_preview", )
+    readonly_fields = ["image_preview"]
     fields = ["picture", "place", "position", "image_preview"]
 
     def image_preview(self, instance):
