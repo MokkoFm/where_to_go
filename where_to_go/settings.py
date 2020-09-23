@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = env("SECRET_KEY", "mokko2070")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", "True")
+DEBUG = env.bool("DEBUG", "False")
 
 ALLOWED_HOSTS = []
 

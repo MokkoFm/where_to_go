@@ -17,13 +17,14 @@ class Command(BaseCommand):
         response.raise_for_status()
         place_data = response.json()
 
-        place = Place.objects.get_or_create(
-            title=place_data["title"],
-            description_short=place_data["description_short"],
-            description_long=place_data["description_long"],
-            lng=place_data["coordinates"]["lng"],
-            lat=place_data["coordinates"]["lat"]
-        )[0]
+        place, created = Place.objects.get_or_create(
+            title=place_data["title"], defaults={
+                'description_short': place_data["description_short"],
+                'description_long': place_data["description_long"],
+                'lng': place_data["coordinates"]["lng"],
+                'lat': place_data["coordinates"]["lat"]
+            }
+        )
 
         for img_number, img in enumerate(place_data["imgs"], start=1):
             response = requests.get(img, allow_redirects=False)
