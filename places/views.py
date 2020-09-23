@@ -35,8 +35,8 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
-def post_detail(request, id):
-    place = get_object_or_404(Place, id=id)
+def post_detail(request, place_id):
+    place = get_object_or_404(Place, id=place_id)
 
     place_details = {
       "title": place.title,
