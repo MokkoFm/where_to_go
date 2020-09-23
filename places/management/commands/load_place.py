@@ -25,7 +25,7 @@ class Command(BaseCommand):
             lat=place_data["coordinates"]["lat"]
         )[0]
 
-        for img_number, img in enumerate(place_data["imgs"]):
+        for img_number, img in enumerate(place_data["imgs"], start=1):
             response = requests.get(img, allow_redirects=False)
             response.raise_for_status()
             content = ContentFile(response.content)
@@ -33,5 +33,5 @@ class Command(BaseCommand):
             new_image = Image()
             new_image.picture.save(filename, content, save=True)
             new_image.place = place
-            new_image.position = img_number + 1
+            new_image.position = img_number
             new_image.save()
