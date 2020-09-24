@@ -31,8 +31,6 @@ class Command(BaseCommand):
             response.raise_for_status()
             content = ContentFile(response.content)
             filename = img.split('/')[-1]
-            new_image = Image()
+            new_image = Image(place=place, position=img_number)
             new_image.picture.save(filename, content, save=True)
-            new_image.place = place
-            new_image.position = img_number
             new_image.save()
