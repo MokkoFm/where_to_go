@@ -9,11 +9,10 @@ Python 3 must be installed. Download the code.
 
 ### Environment Variables 
 
-Some of settings are taken from environment variables. Create `.env` near `manage.py` and write data there in this format:`VARIABLE=value`.
+Some of settings are taken from environment variables. Create `.env` near `manage.py` and write 2 variables there in this format:`VARIABLE=value`.
 
-There're 2 variables:
-- `SECRET-KEY` - project's secret key.
-- `DEBUG` - (default:`False`) debug mode. Set `True` if you need to debug the project.
+- `SECRET_KEY=your secret key`
+- `DEBUG=True or False` - (default:`False`) debug mode. Set `True` if you need to debug the project.
 
 ### Requirements
 
