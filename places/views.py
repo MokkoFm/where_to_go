@@ -7,7 +7,7 @@ from django.urls import reverse
 
 def index(request):
     places = Place.objects.all()
-    places_info = []
+    features_of_places = []
 
     for place in places:
         place_feature = {
@@ -28,9 +28,9 @@ def index(request):
           ]
         }
 
-        places_info.append(place_feature)
+        features_of_places.append(place_feature)
 
-    context = {"value": places_info}
+    context = {"value": features_of_places}
 
     return render(request, 'index.html', context=context)
 
